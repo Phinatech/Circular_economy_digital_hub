@@ -1,25 +1,28 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from '../pages/Home';
-import KnowledgeCenter from '../pages/KnowledgeCenter';
-import Forum from '../pages/Forum';
-import Dashboard from '../pages/Dashboard';
-import Login from '../pages/Auth/Login';
-import Signup from '../pages/Auth/Signup';
-import UserProfile from '../components/UserProfile';
-import Settings from '../components/Settings';
-import Notifications from '../components/Notifications';
-import AdminDashboard from '../components/AdminDashboard';
-import Feedback from '../components/Feedback';
-import HelpCenter from '../components/HelpCenter';
-import './App.css';
+import Home from './Home';
+import About from './About';
+import Contact from './Contact';
+import KnowledgeCenter from './KnowledgeCenter';
+import Forum from './Forum';
+import Dashboard from './Dashboard';
+import Login from './Login';
+import Signup from './Signup';
+import UserProfile from './UserProfile';
+import Settings from './Settings';
+import Notifications from './Notifications';
+import AdminDashboard from './AdminDashboard';
+import Feedback from './Feedback';
+import HelpCenter from './HelpCenter';
 
-const App = () => {
+function App() {
   return (
     <Router>
       <div className="App">
         <Switch>
-          <Route path="/" exact component={Home} />
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
           <Route path="/knowledge-center" component={KnowledgeCenter} />
           <Route path="/forum" component={Forum} />
           <Route path="/dashboard" component={Dashboard} />
@@ -36,6 +39,6 @@ const App = () => {
       </div>
     </Router>
   );
-};
+}
 
 export default App;
