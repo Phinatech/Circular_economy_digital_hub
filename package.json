@@ -15,7 +15,7 @@
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
-    "react-scripts": "4.0.3"
+    "react-scripts": "^3.0.1"
   },
   "author": "tawe kelvin",
   "license": "MIT"

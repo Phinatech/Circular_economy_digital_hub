@@ -4,6 +4,7 @@
 Our mission is to establish a centralized digital platform that educates, connects, and empowers students, faculty, and external partners in circular economy activities. The platform will facilitate knowledge-sharing, monitor sustainability projects, and promote involvement in activities that minimize waste and foster sustainable practices on campus and off.
 
 ## Project Description
+The Circular Economy Digital Hub will be a web-based platform that serves as a one-stop-shop for circular economy activities. It aims to provide a centralized space where students, faculty, and external partners can access educational resources, collaborate on projects, and track sustainability initiatives. By integrating various functionalities such as a knowledge center, event management system, collaboration hub, project dashboard, and gamification system, the platform will foster a community dedicated to minimizing waste and promoting sustainable practices both on and off campus.
 
 ### Background & Problem Statement
 Many students and faculty members are interested in sustainability but lack an easy-to-access platform to learn, engage, and collaborate on circular economy initiatives. Without proper tracking and coordination, many sustainability efforts remain isolated, limiting their impact.
@@ -64,6 +65,5 @@ Through this project, the team will:
 ## Team Members
 - Tawe Kelvin
 - Chinemerm Judith
-- Olivier Ishimwe
+- Girbong Modestine
 - SINGA Ewing
-- Fatoumata Ndiaye

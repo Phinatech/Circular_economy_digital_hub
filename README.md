@@ -32,8 +32,75 @@ npm start
 ```
 Then, navigate to `http://localhost:3000` in your web browser to explore the application.
 
+## **Project Structure**
+```filetree
+Circular_economy_digital_hub
+└── Circular_economy_digital_hub
+|   ├── backend
+|       ├── src
+|           ├── controllers
+|               └── index.js
+|           ├── models
+|               └── index.js
+|           ├── routes
+|               └── index.js
+|           ├── services
+|               └── index.js
+|           ├── utils
+|               └── index.js
+|           ├── app.js
+|           └── server.js
+|       ├── package.json
+|       ├── .env
+|       └── README.md
+|   ├── frontend
+|       ├── public
+|           └── index.html
+|       ├── src
+|           ├── components
+|               └── App.js
+|           ├── pages
+|               └── Home.js
+|           ├── services
+|               └── api.js
+|           ├── styles
+|               └── App.css
+|           ├── utils
+|               └── index.js
+|           └── index.js
+|       ├── package.json
+|       └── README.md
+|   ├── database
+|       ├── migrations
+|           └── init.sql
+|       ├── seeds
+|           └── seed.sql
+|       ├── config.js
+|       └── README.md
+|   └── README.md
+```
+
 ## **Contributing**
 We welcome contributions! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+## **Future Enhancements**
+- Implement additional features such as user notifications and real-time updates.
+- Expand the knowledge center with more resources and articles.
+- Improve the user interface based on user feedback.
+
+## **Frequently Asked Questions (FAQ)**
+**Q: How do I reset my password?**  
+A: You can reset your password by clicking on the "Forgot Password" link on the login page.
+
+**Q: How can I report a bug?**  
+A: Please open an issue in the repository and provide details about the bug.
+
+## **Contact Information**
+For support or inquiries, please reach out to us at [support@circulareconomy.com](mailto:support@circulareconomy.com).
+
+## **Changelog**
+- **v1.0.0**: Initial release with core features.
+- **v1.1.0**: Added user profile management and community forums.
 
 ## **License**
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
