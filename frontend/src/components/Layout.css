@@ -1,0 +1,37 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    background: #2c3e50;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+  }
+  
+  .nav-links a {
+    color: white;
+    margin-left: 2rem;
+    text-decoration: none;
+  }
+  
+  .active {
+    border-bottom: 2px solid #3498db;
+  }
+  
+  /* Footer Styles */
+  .footer {
+    background: #34495e;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+  }

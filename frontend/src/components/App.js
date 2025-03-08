@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+// Lazy-loaded components
+const About = React.lazy(() => import('./pages/About'));
+const Contact = React.lazy(() => import('./pages/Contact'));
 // Pages
 import Home from '../pages/Home.jsx';
 import About from '../pages/About.jsx';
@@ -11,7 +14,7 @@ import Dashboard from '../pages/Dashboard.jsx';
 import Login from '../pages/Auth/Login.jsx';
 import Signup from '../pages/Auth/Signup.jsx';
 import NotFound from '../pages/NotFound.jsx';
-import Layout from './components/Layout.jsx';
+import Layout from '../components/Layout.jsx';
 
 // Components
 import UserProfile from './UserProfile';
