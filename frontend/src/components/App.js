@@ -1,13 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './Home';
-import About from './About';
-import Contact from './Contact';
-import KnowledgeCenter from './KnowledgeCenter';
-import Forum from './Forum';
-import Dashboard from './Dashboard';
-import Login from './Login';
-import Signup from './Signup';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+// Pages (use "../pages" to go up one level from "components")
+import Home from '../pages/Home';
+import About from '../pages/About';
+import Contact from '../pages/Contact';
+import KnowledgeCenter from '../pages/KnowledgeCenter';
+import Forum from '../pages/Forum';
+import Dashboard from '../pages/Dashboard';
+import Login from '../pages/Auth/Login';
+import Signup from '../pages/Auth/Signup';
+
+// Components (already in the "components" directory)
 import UserProfile from './UserProfile';
 import Settings from './Settings';
 import Notifications from './Notifications';
@@ -34,7 +38,6 @@ function App() {
           <Route path="/admin-dashboard" component={AdminDashboard} />
           <Route path="/feedback" component={Feedback} />
           <Route path="/help-center" component={HelpCenter} />
-          {/* Add more routes here as needed */}
         </Switch>
       </div>
     </Router>
