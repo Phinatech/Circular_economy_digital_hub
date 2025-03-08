@@ -1,0 +1,31 @@
+.footer {
+    background-color: #FFFFFF;
+    color: #333333;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    flex: 1;
+    margin: 10px;
+}
+
+.footer-link {
+    color: #2D9D9F; /* Teal */
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-media a {
+    margin-right: 10px;
+    color: #2B8C44; /* Eco Green */
+}
