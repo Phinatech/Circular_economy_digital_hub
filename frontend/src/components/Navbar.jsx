@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { FiInfo, FiBook, FiMessageSquare, FiUser } from 'react-icons/fi';
 import './Navbar.css';
 import ThemeToggle from './ThemeToggle';
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
@@ -27,14 +29,11 @@ const Navbar = () => {
     <nav className={`navbar ${isOpen ? 'open' : ''}`}>
       <div className="navbar-brand">
         <NavLink to="/" className="logo">
+          <span className="logo-icon">♻️</span>
           CircularHub
         </NavLink>
         
-        <button 
-          className="hamburger"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Menu"
-        >
+        <button className="hamburger" onClick={() => setIsOpen(!isOpen)} aria-label="Menu">
           <span className="hamburger-line"></span>
           <span className="hamburger-line"></span>
           <span className="hamburger-line"></span>
@@ -42,37 +41,49 @@ const Navbar = () => {
       </div>
 
       <div className={`nav-links ${isOpen ? 'show' : ''}`}>
-        <NavLink 
-          to="/about" 
-          className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-        >
-          About
-        </NavLink>
-        <NavLink 
-          to="/knowledge-center" 
-          className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-        >
-          Knowledge
-        </NavLink>
-        <NavLink 
-          to="/forum" 
-          className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-        >
-          Forum
-        </NavLink>
-        <div className="nav-actions">
+        {/* Main Navigation */}
+        <div className="nav-section">
           <NavLink 
-            to="/login" 
-            className="nav-button login-btn"
+            to="/about" 
+            className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
           >
-            Login
+            <FiInfo className="nav-icon" />
+            About
           </NavLink>
           <NavLink 
-            to="/signup" 
-            className="nav-button signup-btn"
+            to="/knowledge-center" 
+            className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
           >
-            Sign Up
+            <FiBook className="nav-icon" />
+            Knowledge Center
           </NavLink>
+          <NavLink 
+            to="/forum" 
+            className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+          >
+            <FiMessageSquare className="nav-icon" />
+            Forum
+          </NavLink>
+        </div>
+
+        {/* User & Settings */}
+        <div className="nav-section">
+          <ThemeToggle />
+          <div className="nav-actions">
+            <NavLink 
+              to="/login" 
+              className="nav-button login-btn"
+            >
+              <FiUser className="nav-icon" />
+              Login
+            </NavLink>
+            <NavLink 
+              to="/signup" 
+              className="nav-button signup-btn"
+            >
+              Sign Up
+            </NavLink>
+          </div>
         </div>
       </div>
     </nav>

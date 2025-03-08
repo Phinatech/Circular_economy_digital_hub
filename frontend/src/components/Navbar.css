@@ -114,6 +114,42 @@
     background: transparent;
     color: var(--accent-color);
   }
+
+  /* Icons */
+.nav-icon {
+    margin-right: 0.8rem;
+    font-size: 1.2rem;
+    vertical-align: middle;
+  }
+  
+  .logo-icon {
+    margin-right: 0.5rem;
+  }
+  
+  /* Sections */
+  .nav-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .nav-section:last-child {
+    border-bottom: none;
+    margin-top: auto;
+  }
+  
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .nav-section {
+      width: 100%;
+    }
+    
+    .logo-icon {
+      font-size: 1.2rem;
+    }
+  }
   
   /* Mobile Styles */
   @media (max-width: 768px) {
