@@ -1,5 +1,6 @@
 // src/index.js
 import React from 'react';
+import { ThemeProvider } from './context/ThemeContext';
 import { createRoot } from 'react-dom/client'; // Updated import
 import App from './components/App'; // Verify this path
 
@@ -7,9 +8,10 @@ import App from './components/App'; // Verify this path
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-// Render the app
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>
 );
