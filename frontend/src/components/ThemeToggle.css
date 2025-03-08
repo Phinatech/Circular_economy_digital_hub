@@ -1,0 +1,37 @@
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  
+  .toggle-track {
+    width: 50px;
+    height: 24px;
+    background: var(--color-border);
+    border-radius: 12px;
+    position: relative;
+    transition: background 0.3s ease;
+  }
+  
+  .toggle-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--color-background);
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s ease;
+  }
+  
+  .toggle-track.dark .toggle-thumb {
+    transform: translateX(26px);
+  }
+  
+  .toggle-label {
+    font-size: 1.2rem;
+  }
