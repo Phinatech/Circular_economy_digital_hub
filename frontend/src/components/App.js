@@ -10,6 +10,8 @@ import Forum from '../pages/Forum.jsx';
 import Dashboard from '../pages/Dashboard.jsx';
 import Login from '../pages/Auth/Login.jsx';
 import Signup from '../pages/Auth/Signup.jsx';
+import NotFound from '../pages/NotFound.jsx';
+import Layout from './components/Layout.jsx';
 
 // Components
 import UserProfile from './UserProfile';
@@ -38,6 +40,7 @@ function App() {
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/help-center" element={<HelpCenter />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
