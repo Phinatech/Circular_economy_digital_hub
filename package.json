@@ -10,15 +10,17 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "nth-check": "^2.1.1",
-    "postcss": "^8.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.3.0",
-    "serialize-javascript": "^6.0.2"
+    "react-router-dom": "^7.3.0"
   },
   "devDependencies": {
     "react-scripts": "^5.0.1"
+  },
+  "resolutions": {
+    "nth-check": "^2.0.1",
+    "postcss": "^8.4.31",
+    "serialize-javascript": "^6.0.2"
   },
   "author": "tawe kelvin",
   "license": "MIT"
