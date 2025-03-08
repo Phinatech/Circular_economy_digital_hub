@@ -101,6 +101,7 @@ For support or inquiries, please reach out to us at [support@circulareconomy.com
 ## **Changelog**
 - **v1.0.0**: Initial release with core features.
 - **v1.1.0**: Added user profile management and community forums.
+- **v1.2.0**: Updated README with recent changes and enhancements.
 
 ## **License**
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
