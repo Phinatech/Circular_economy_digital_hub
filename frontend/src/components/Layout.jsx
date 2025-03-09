@@ -1,18 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
-import ThemeToggle from './ThemeToggle'; // Importing ThemeToggle
-
 import Footer from './Footer';
-import './Layout.css'; // Optional CSS
+import './Layout.css';
 
 const Layout = () => {
   return (
-    <div className="layout">
+    <div className="app-container">
       <Navbar />
-      <ThemeToggle /> {/* Adding ThemeToggle for theme switching */}
-
       <main className="main-content">
-        <Outlet /> {/* Renders child routes */}
+        <Outlet /> {/* This renders your page content */}
       </main>
       <Footer />
     </div>

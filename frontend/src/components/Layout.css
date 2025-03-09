@@ -1,97 +1,30 @@
-/* In your main layout CSS */
-body {
+/* Layout.css */
+.app-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-main {
+.main-content {
   flex: 1;
-}
-/* Footer.css */
-.footer {
-  background-color: var(--bg-footer, #2d2d2d);
-  color: var(--text-footer, #ffffff);
-  padding: 2rem 1rem;
-  margin-top: auto; /* For sticky footer */
-}
-
-.footer-content {
+  padding: 2rem;
+  margin-top: 60px; /* Adjust based on your navbar height */
   max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  padding: 1rem 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
-.footer-section {
-  padding: 1rem;
-}
-
-.footer-section h4 {
-  color: var(--accent-color, #4CAF50);
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.footer-links a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 0.95rem;
-}
-
-.footer-links a:hover {
-  color: var(--accent-color, #4CAF50);
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.social-links a {
-  color: white;
-  font-size: 1.5rem;
-  transition: transform 0.3s ease;
-}
-
-.social-links a:hover {
-  transform: translateY(-2px);
-  color: var(--accent-color, #4CAF50);
-}
-
-.footer-copyright {
-  text-align: center;
-  padding: 1.5rem 0 0;
-  margin-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* Responsive Design */
+/* For mobile */
 @media (max-width: 768px) {
-  .footer-content {
-    grid-template-columns: 1fr;
-    text-align: center;
+  .main-content {
+    padding: 1rem;
+    margin-top: 50px;
   }
+}
 
-  .footer-links {
-    align-items: center;
-  }
-
-  .social-links {
-    justify-content: center;
-  }
+/* Add these to ensure proper spacing */
+.main-content {
+  padding-bottom: 2rem;
+  background: var(--main-bg);
 }

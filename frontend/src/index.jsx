@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
-import { UserProvider } from './context/UserContext';
+import { AuthProvider } from './context/AuthContext'; // Changed from UserProvider
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.StrictMode>
-        <ThemeProvider>
-            <UserProvider>
-                <App />
-            </UserProvider>
-        </ThemeProvider>
-    </React.StrictMode>
+  <React.StrictMode>
+    <Router>
+      <ThemeProvider>
+        <AuthProvider> {/* Changed to AuthProvider */}
+          <App />
+        </AuthProvider>
+      </ThemeProvider>
+    </Router>
+  </React.StrictMode>
 );
