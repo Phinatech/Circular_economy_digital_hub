@@ -3,6 +3,11 @@
     --deep-space: #2c3e50;
     --electric-blue: #3498db;
     --shadow-elevation: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --light-bg: #f8f9fa; /* Light background */
+    --dark-bg: #1a202c; /* Dark background */
+    --light-text: #000; /* Light text color */
+    --dark-text: #fff; /* Dark text color */
+
   }
   
   /* Enhanced Layout System */
@@ -10,7 +15,8 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: #f8f9fa;
+    background: var(--light-bg);
+
     position: relative;
   }
   
@@ -75,6 +81,8 @@
   /* Modern Footer Design */
   .footer {
     background: var(--deep-space);
+    color: var(--dark-text);
+
     color: white;
     padding: 2rem 1rem;
     text-align: center;

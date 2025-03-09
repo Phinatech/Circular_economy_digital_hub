@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from '../components/Layout.jsx';
 import ErrorBoundary from '../components/errorBoundary.jsx';
 import Marketplace from '../pages/Marketplace.jsx';
+import Home from '../pages/Home.jsx'; // Importing Home component
+import Login from '../pages/Auth/Login.jsx'; // Importing Login component
+import Signup from '../pages/Auth/Signup.jsx'; // Importing Signup component
 
 
 

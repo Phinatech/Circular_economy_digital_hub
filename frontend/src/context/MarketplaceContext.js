@@ -13,13 +13,15 @@ export const MarketplaceProvider = ({ children }) => {
         location: null
     });
 
-    const filteredProducts = products.filter(product => (
+    const filteredProducts = products?.filter(product => (
         product.sustainabilityRating >= selectedFilters.sustainabilityLevel &&
         product.price >= selectedFilters.priceRange[0] &&
         product.price <= selectedFilters.priceRange[1] &&
         (selectedFilters.materials.length === 0 || 
-         product.materials.some(m => selectedFilters.materials.includes(m))) &&
+         (product.materials && product.materials.some(m => selectedFilters.materials.includes(m)))) &&
         (!selectedFilters.location || product.location === selectedFilters.location)
+
+
     ));
 
     return (
