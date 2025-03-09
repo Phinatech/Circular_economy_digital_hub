@@ -18,6 +18,9 @@ This project is a dynamic web application designed to provide users with an enga
 | **Community Forums** | Connect with other users and share your thoughts. |
 | **Profile Management** | Easily update your personal information and preferences. |
 | **Help Center** | Get support and find answers to your questions. |
+| **User Notifications** | Receive real-time notifications for important updates. |
+| **Real-Time Updates** | Stay informed with live updates on community activities. |
+
 
 ## **Installation**
 To install the project, run:

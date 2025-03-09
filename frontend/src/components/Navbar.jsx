@@ -15,7 +15,7 @@ const useDropdownState = (initialState = {}) => {
 
   const toggleDropdown = useCallback((dropdown) => {
     setDropdowns(prev => ({
-      ...Object.keys(prev).reduce((acc, key) => ({ ...acc, [key]: false }), {}),
+      ...Object.keys(prev).reduce((acc, key) => ({ ...acc, [key]: false }), {}), 
       [dropdown]: !prev[dropdown]
     }));
   }, []);
@@ -65,6 +65,10 @@ const Navbar = () => {
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [toggleDropdown]);
+
+  useEffect(() => {
+    return () => setLoading(false);
+  }, [location]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -156,8 +160,13 @@ const Navbar = () => {
               <button 
                 className="nav-item"
                 onClick={() => toggleDropdown(item.name)}
-                onTouchStart={() => window.innerWidth <= 768 && toggleDropdown(item.name)}
+                onTouchStart={(e) => {
+                  e.preventDefault();
+                  window.innerWidth <= 768 && toggleDropdown(item.name);
+                }}
                 aria-expanded={dropdowns[item.name]}
+                role="menuitem"
+                onKeyDown={(e) => e.key === 'Enter' && toggleDropdown(item.name)}
               >
                 <item.icon className="nav-icon" />
                 <span>{item.name}</span>
@@ -239,7 +248,11 @@ const Navbar = () => {
                 aria-expanded={dropdowns.account}
               >
                 {user.avatar ? (
-                  <img src={user.avatar} alt={user.name} className="user-avatar" />
+                  <img 
+                    src={user.avatar} 
+                    alt={t('userAvatar', { name: user.name })}
+                    className="user-avatar"
+                  />
                 ) : (
                   <FiUser className="nav-icon" />
                 )}
@@ -267,7 +280,10 @@ const Navbar = () => {
                   <FiSettings className="nav-icon" />
                   {t('settings')}
                 </NavLink>
-                <button className="dropdown-item" onClick={logout}>
+                <button className="dropdown-item" onClick={() => {
+                  logout();
+                  toggleDropdown('account');
+                }}>
                   <FiLogOut className="nav-icon" />
                   {t('logout')}
                 </button>
