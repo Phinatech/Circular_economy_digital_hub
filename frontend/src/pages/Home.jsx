@@ -1,7 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaRecycle, FaHandshake, FaChartLine, FaLeaf } from 'react-icons/fa';
+
+import { 
+  FaRecycle,
+  FaHandshake,
+  FaChartLine,
+  FaLeaf,
+  FaTwitter,
+  FaLinkedin,
+  FaInstagram
+} from 'react-icons/fa';
+
 import CountUp from 'react-countup';
 
 const Home = () => {

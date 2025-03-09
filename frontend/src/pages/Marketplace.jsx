@@ -1,5 +1,6 @@
 // src/pages/Marketplace.jsx
 import React from 'react';
+import MarketplaceFilters from "../components/Marketplace/MarketplaceFilters";
 import { MarketplaceProvider } from '../context/MarketplaceContext';
 import MarketplaceHeader from '../components/Marketplace/MarketplaceHeader';
 import ProductGrid from '../components/Marketplace/ProductGrid';
