@@ -6,6 +6,7 @@ import Layout from '../components/Layout.jsx';
 import Home from '../pages/Home.jsx';
 import Login from '../pages/Auth/Login.jsx';
 import Signup from '../pages/Auth/Signup.jsx';
+import Marketplace from '../pages/Marketplace.jsx';
 
 // Lazy-loaded components
 const About = React.lazy(() => import('../pages/About.jsx'));
@@ -18,6 +19,7 @@ const Settings = React.lazy(() => import('./Settings'));
 const Notifications = React.lazy(() => import('./Notifications'));
 const AdminDashboard = React.lazy(() => import('./AdminDashboard'));
 const Feedback = React.lazy(() => import('./Feedback'));
+
 const HelpCenter = React.lazy(() => import('./HelpCenter'));
 const NotFound = React.lazy(() => import('../pages/NotFound.jsx'));
 
@@ -54,6 +56,11 @@ function App() {
           <Route path="forum" element={
             <Suspense fallback={<Loading />}>
               <Forum />
+            </Suspense>
+          }/>
+          <Route path="marketplace" element={
+            <Suspense fallback={<Loading />}>
+              <Marketplace />
             </Suspense>
           }/>
           <Route path="dashboard" element={

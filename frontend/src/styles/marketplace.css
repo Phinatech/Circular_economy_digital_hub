@@ -1,0 +1,13 @@
+.marketplace-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  
+  .sustainability-meter {
+    background: linear-gradient(90deg, #ef4444 0%, #f59e0b 50%, #10b981 100%);
+  }
+  
+  .barter-animation {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
