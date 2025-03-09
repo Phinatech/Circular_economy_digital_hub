@@ -41,7 +41,7 @@ const Forum = () => {
 
     return (
         <div className="flex min-h-screen bg-gray-50 p-6 lg:p-12">
-            <motion.aside 
+            <motion.aside
                 className={`bg-white p-4 shadow-md w-64 fixed inset-y-0 ${isSidebarOpen ? "left-0" : "-left-64"} transition-all duration-300`}
             >
                 <h2 className="text-xl font-bold mb-4">Categories</h2>
@@ -123,10 +123,10 @@ const Forum = () => {
                                     {categories.length} Active Categories
                                 </span>
                             </div>
-                            
+
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {categories.map((category, index) => (
-                                    <div 
+                                    <div
                                         key={index}
                                         className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-green-100 relative"
                                     >
@@ -134,7 +134,7 @@ const Forum = () => {
                                             <FaFire className="mr-1" />
                                             {Math.round((index / 1000) * 100)}% Active
                                         </div>
-                                        
+
                                         <div className="flex items-start">
                                             <div className="p-3 bg-green-100 rounded-xl mr-4">
                                                 <FaComments className="w-6 h-6 text-green-600" />
@@ -142,13 +142,13 @@ const Forum = () => {
                                             <div className="flex-1">
                                                 <h3 className="text-xl lg:text-2xl font-bold mb-2">{category}</h3>
                                                 <p className="text-gray-600 mb-4">Discuss various topics related to {category}</p>
-                                                
+
                                                 <div className="flex items-center justify-between text-sm">
                                                     <div className="space-y-2">
                                                         <div className="flex items-center">
                                                             <span className="w-24 text-gray-500">Engagement:</span>
                                                             <div className="h-2 bg-gray-100 rounded-full flex-1 ml-2">
-                                                                <div 
+                                                                <div
                                                                     className="h-full bg-green-500 rounded-full transition-all duration-500"
                                                                     style={{ width: `${Math.min((index / 2000) * 100, 100)}%` }}
                                                                 />
@@ -177,15 +177,15 @@ const Forum = () => {
 
                                 <div className="space-y-6">
                                     {forumDiscussions.map(discussion => (
-                                        <div 
+                                        <div
                                             key={discussion.id}
                                             className="group p-4 rounded-xl border border-gray-100 hover:border-green-100 transition-all relative overflow-hidden"
                                         >
-                                            <div 
+                                            <div
                                                 className="absolute bottom-0 left-0 h-1 bg-green-100 w-full"
                                                 aria-hidden="true"
                                             >
-                                                <div 
+                                                <div
                                                     className="h-full bg-green-500 transition-all duration-500"
                                                     style={{ width: `${Math.min((discussion.id / 50) * 100, 100)}%` }}
                                                 />
@@ -252,7 +252,7 @@ const Forum = () => {
                                 <p className="text-sm text-gray-500">Share your ideas with the community</p>
                             </div>
                         </button>
-                        
+
                         <button className="p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-all flex items-center group">
                             <div className="p-3 bg-blue-100 rounded-xl mr-4 group-hover:bg-blue-200 transition-colors">
                                 <FaTags className="w-6 h-6 text-blue-600" />
@@ -307,6 +307,8 @@ const Forum = () => {
                             <FaTags className="mr-2 text-green-600" />
                             Topic Cloud
                         </h3>
+                        <div style={{ padding: 'var(--space-lg)' }}></div>
+                        <div style={{ backgroundColor: 'var(--color-bg-elevated)' }}></div>
                         <div className="flex flex-wrap gap-3">
                             {['Plastic Recycling', 'Circular Fashion', 'Sustainable Packaging', 'E-Waste Management', 'BioMaterials', 'Renewable Energy', 'Green Tech'].map(tag => (
                                 <span
@@ -328,14 +330,14 @@ const Forum = () => {
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
                     <div className="bg-white p-6 rounded shadow-lg">
                         <h2 className="text-xl font-bold">Create Discussion</h2>
-                        <input 
-                            type="text" 
-                            placeholder="Discussion Title" 
-                            className="w-full p-2 border rounded mt-2" 
+                        <input
+                            type="text"
+                            placeholder="Discussion Title"
+                            className="w-full p-2 border rounded mt-2"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                         />
-                        <select 
+                        <select
                             className="w-full p-2 border rounded mt-2"
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}
@@ -344,9 +346,14 @@ const Forum = () => {
                                 <option key={cat} value={cat}>{cat}</option>
                             ))}
                         </select>
+                        <div className="card">
+                            <h2>Discussion Categories</h2>
+                            <button className="btn btn-primary">New Post</button>
+                        </div>
+                        
                         <div className="flex justify-end space-x-2 mt-4">
                             <button className="p-2 bg-gray-400 text-white rounded" onClick={toggleModal}>Cancel</button>
-                            <button 
+                            <button
                                 className="p-2 bg-blue-600 text-white rounded"
                                 onClick={addDiscussion}
                             >Post</button>
