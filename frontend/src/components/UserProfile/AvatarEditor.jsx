@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import AvatarEditor from './AvatarEditor';
+import AvatarEditor from 'react-avatar-editor';
 import PropTypes from 'prop-types';
 import './AvatarEditor.css';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaRecycle, FaHandshake, FaChartLine, FaLeaf } from 'react-icons/fa';
-import { CountUp } from 'react-countup';
+import CountUp from 'react-countup';
 
 const Home = () => {
   const stats = [
@@ -91,7 +91,16 @@ const Home = () => {
             >
               <div className="text-4xl text-green-600 mb-4">{stat.icon}</div>
               <div className="text-3xl font-bold text-gray-800 mb-2">
-                <CountUp end={stat.number} suffix={stat.suffix} duration={2} />
+                <CountUp
+                  start={0}
+                  end={stat.number}
+                  duration={2}
+                  suffix={stat.suffix || ''}
+                >
+                  {({ countUpRef }) => (
+                    <span ref={countUpRef} />
+                  )}
+                </CountUp>
               </div>
               <div className="text-gray-600">{stat.label}</div>
             </motion.div>
