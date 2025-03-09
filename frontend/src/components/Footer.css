@@ -1,3 +1,9 @@
+:root {
+    --bg-footer: #2d2d2d;
+    --text-footer: #ffffff;
+    --accent-color: #4CAF50;
+  }
+  
 .footer {
     background: #0f172a;
     color: #f8fafc;

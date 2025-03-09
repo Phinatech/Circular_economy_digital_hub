@@ -1,15 +1,19 @@
 :root {
+    /* Light theme */
     --bg-color: #ffffff;
     --text-color: #000000;
+    --primary-color: #2196f3;
   }
   
   [data-theme="dark"] {
+    /* Dark theme */
     --bg-color: #1a1a1a;
     --text-color: #ffffff;
+    --primary-color: #90caf9;
   }
   
   body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    transition: all 0.3s ease;
+    transition: background-color 0.3s, color 0.3s;
   }
