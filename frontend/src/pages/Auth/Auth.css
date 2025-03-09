@@ -1,4 +1,9 @@
+body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
 .auth-container {
+
     max-width: 400px;
     margin: 2rem auto;
     padding: 2rem;

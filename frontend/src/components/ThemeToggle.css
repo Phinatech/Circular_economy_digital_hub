@@ -5,7 +5,13 @@
     --thumb-size: 24px;
     --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     --sun-color: #ffd700;
-    --moon-color: #e2e8f0;
+    --moon-color: #e2e8f0; /* Light mode moon color */
+    --sun-color: #ffd700; /* Light mode sun color */
+    --toggle-bg-light: #ffffff; /* Light mode toggle background */
+    --toggle-bg-dark: #2d3748; /* Dark mode toggle background */
+    --toggle-thumb-light: #ffffff; /* Light mode toggle thumb color */
+    --toggle-thumb-dark: #4a5568; /* Dark mode toggle thumb color */
+
     --light-bg: linear-gradient(145deg, #ffffff, #f5f5f5);
     --dark-bg: linear-gradient(145deg, #2d3748, #1a202c);
     --accent-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -23,7 +29,8 @@
     position: relative;
     transition: var(--transition);
     backdrop-filter: blur(8px);
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--toggle-bg-light);
+
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
@@ -58,7 +65,8 @@
   .toggle-thumb {
     width: var(--thumb-size);
     height: var(--thumb-size);
-    background: #fff;
+    background: var(--toggle-thumb-light);
+
     border-radius: 50%;
     position: absolute;
     top: 4px;
