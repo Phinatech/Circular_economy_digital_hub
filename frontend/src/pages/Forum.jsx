@@ -246,7 +246,7 @@ const Forum = () => {
                             <FaUserCircle className="w-6 h-6 text-green-600" />
                         </div>
                         <div className="text-left">
-                            <p className="font-semibold">Start New Discussion</p>
+                            <p className="font-semibold lg:text-lg">Start New Discussion</p>
                             <p className="text-sm text-gray-500">Share your ideas with the community</p>
                         </div>
                     </button>
@@ -256,7 +256,7 @@ const Forum = () => {
                             <FaTags className="w-6 h-6 text-blue-600" />
                         </div>
                         <div className="text-left">
-                            <p className="font-semibold">Browse Popular Topics</p>
+                            <p className="font-semibold lg:text-lg">Browse Popular Topics</p>
                             <p className="text-sm text-gray-500">Explore trending discussions</p>
                         </div>
                     </button>
@@ -266,7 +266,7 @@ const Forum = () => {
                             <FaRegClock className="w-6 h-6 text-purple-600" />
                         </div>
                         <div className="text-left">
-                            <p className="font-semibold">Your Activity</p>
+                            <p className="font-semibold lg:text-lg">Your Activity</p>
                             <p className="text-sm text-gray-500">Review your contributions</p>
                         </div>
                     </button>
@@ -279,7 +279,7 @@ const Forum = () => {
                             <FaUserCircle className="w-6 h-6 text-green-600" />
                         </div>
                         <div>
-                            <h3 className="font-semibold">Your Profile</h3>
+                            <h3 className="font-semibold lg:text-lg">Your Profile</h3>
                             <p className="text-sm text-gray-500">Community Member</p>
                         </div>
                     </div>
@@ -301,7 +301,7 @@ const Forum = () => {
 
                 {/* Topic Cloud */}
                 <div className="mt-8 pt-6 border-t border-gray-100">
-                    <h3 className="text-lg font-semibold mb-4 flex items-center">
+                    <h3 className="text-lg lg:text-xl font-semibold mb-4 flex items-center">
                         <FaTags className="mr-2 text-green-600" />
                         Topic Cloud
                     </h3>
