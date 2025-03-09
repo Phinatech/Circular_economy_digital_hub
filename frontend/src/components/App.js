@@ -2,12 +2,9 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from '../components/Layout.jsx';
 import ErrorBoundary from '../components/errorBoundary.jsx';
-
-// Static imports for critical components
-import Home from '../pages/Home.jsx';
-import Login from '../pages/Auth/Login.jsx';
-import Signup from '../pages/Auth/Signup.jsx';
 import Marketplace from '../pages/Marketplace.jsx';
+
+
 
 // Lazy-loaded components
 const About = React.lazy(() => import('../pages/About.jsx'));
