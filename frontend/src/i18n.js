@@ -12,10 +12,26 @@ const resources = {
       searchPlaceholder: "Search...",
       login: "Login",
       logout: "Logout",
+      circularSolutions: "Circular Solutions",
+      wasteManagement: "Waste Management",
+      eWaste: "E-Waste",
+      plasticRecycling: "Plastic Recycling",
+      recyclingPrograms: "Recycling Programs",
+      guides: "Guides",
+      caseStudies: "Case Studies",
+      researchPapers: "Research Papers",
+      forum: "Forum",
+      events: "Events",
+      partners: "Partners",
+      downloads: "Downloads",
+      calculators: "Calculators",
+      apiDocs: "API Documentation",
+      userAvatar: "Profile picture of {{name}}",
       language: {
         en: "English",
         es: "Spanish",
         fr: "French"
+    
       }
     }
   },

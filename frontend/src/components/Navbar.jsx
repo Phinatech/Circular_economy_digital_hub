@@ -3,12 +3,12 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { 
   FiInfo, FiBook, FiMessageSquare, FiUser, FiChevronDown, 
   FiChevronUp, FiGrid, FiUsers, FiDownload, FiGlobe, FiSearch,
-  FiSettings, FiTool, FiLogOut
+  FiSettings, FiTool, FiLogOut, FiChevronRight 
 } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 import './Navbar.css';
 import ThemeToggle from './ThemeToggle';
-import { useAuth } from '../context/AuthContext'; // Assume you have this context
+import { useAuth } from '../context/AuthContext';
 
 const useDropdownState = (initialState = {}) => {
   const [dropdowns, setDropdowns] = useState(initialState);
