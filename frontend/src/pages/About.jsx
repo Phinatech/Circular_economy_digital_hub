@@ -8,7 +8,29 @@ import {
     FaRecycle, FaChartLine, FaHandshake, FaAward, FaGithub
 } from 'react-icons/fa';
 import { SiTesla } from 'react-icons/si';
-
+const Contact = () => {
+    return (
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="contact-container"
+      >
+        <form className="contact-form">
+          <input className="form-input" type="text" placeholder="Name" />
+          <input className="form-input" type="email" placeholder="Email" />
+          <textarea className="form-textarea" placeholder="Message" />
+          <button className="submit-button">Send Message</button>
+        </form>
+        <motion.form
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="contact-form"
+        >
+          {/* Form elements */}
+        </motion.form>
+      </motion.div>
+    );
+  };
 const About = () => {
     const stats = [
         { number: 12700, label: 'Tons Waste Recycled', icon: <FaRecycle className="inline mb-2" /> },
@@ -71,7 +93,7 @@ const About = () => {
                         transition={{ type: "spring", stiffness: 50 }}
                         className="relative z-10 space-y-8"
                     >
-                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold">
+                        <h1 className="hero-title text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold">
                             <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
                                 Redefining
                             </span>
@@ -99,7 +121,7 @@ const About = () => {
             </motion.section>
 
             {/* Enhanced Stats Grid */}
-            <section className="py-24">
+            <section className="stats-grid py-24">
                 <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {stats.map((stat, index) => (
                         <motion.div 
@@ -108,7 +130,7 @@ const About = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ delay: index * 0.2, type: "spring" }}
-                            className="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-shadow group relative overflow-hidden"
+                            className="stat-card bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-shadow group relative overflow-hidden"
                         >
                             <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             <div className="relative z-10">
@@ -137,7 +159,7 @@ const About = () => {
             </section>
 
             {/* Enhanced Timeline */}
-            <section className="py-24 bg-white/50 backdrop-blur-sm">
+            <section className="timeline-container py-24 bg-white/50 backdrop-blur-sm">
                 <div className="max-w-7xl mx-auto px-4">
                     <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
@@ -147,7 +169,7 @@ const About = () => {
                         Our Journey
                     </motion.h2>
                     <div className="relative">
-                        <div className="absolute left-1/2 w-1 bg-gradient-to-b from-green-200 to-emerald-200 h-full transform -translate-x-1/2" />
+                        <div className="timeline-line absolute left-1/2 w-1 bg-gradient-to-b from-green-200 to-emerald-200 h-full transform -translate-x-1/2" />
                         
                         {[2018, 2020, 2022, 2024].map((year, index) => (
                             <motion.div
@@ -192,7 +214,7 @@ const About = () => {
             </section>
 
             {/* Enhanced Team Section */}
-            <section className="py-24 bg-emerald-50/50">
+            <section className="team-grid py-24 bg-emerald-50/50">
                 <div className="max-w-7xl mx-auto px-4">
                     <motion.h2 
                         initial={{ opacity: 0 }}
@@ -209,7 +231,7 @@ const About = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ margin: "-100px" }}
                                 transition={{ delay: index * 0.1 }}
-                                className="group relative"
+                                className="team-card group relative"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-b from-green-600/20 to-emerald-500/10 rounded-3xl transform group-hover:scale-105 transition-transform" />
                                 <div className="relative bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
@@ -253,7 +275,7 @@ const About = () => {
             </section>
 
             {/* Enhanced Partners Section */}
-            <section className="py-24">
+            <section className="partners-grid py-24">
                 <div className="max-w-7xl mx-auto px-4">
                     <motion.h2 
                         initial={{ opacity: 0 }}
@@ -267,7 +289,7 @@ const About = () => {
                             <motion.div
                                 key={index}
                                 whileHover={{ y: -5 }}
-                                className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-shadow flex flex-col items-center text-center border border-emerald-50"
+                                className="partner-card bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-shadow flex flex-col items-center text-center border border-emerald-50"
                             >
                                 <div className="w-20 h-20 mb-6 bg-emerald-50 rounded-2xl flex items-center justify-center text-4xl">
                                     {partner.icon}

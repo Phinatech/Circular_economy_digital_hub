@@ -1,0 +1,77 @@
+/* Add to your CSS file */
+:root {
+    --animation-duration: 0.8s;
+    --animation-easing: cubic-bezier(0.16, 1, 0.3, 1);
+    --stagger-delay: 0.15s;
+  }
+  
+  .scroll-animate {
+    /* Base styles for scroll-animated elements */
+    opacity: 0; /* Fallback for non-Framer Motion users */
+    transform: translateY(20px); /* Fallback */
+  }
+  
+  /* Custom animation presets */
+  [data-animate="slide-up"] {
+    animation: slideUp var(--animation-duration) var(--animation-easing) forwards;
+  }
+  
+  [data-animate="scale-in"] {
+    animation: scaleIn var(--animation-duration) var(--animation-easing) forwards;
+  }
+  
+  [data-animate="rotate-in"] {
+    animation: rotateIn var(--animation-duration) var(--animation-easing) forwards;
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95) rotate(-2deg);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) rotate(0);
+    }
+  }
+  
+  @keyframes rotateIn {
+    from {
+      opacity: 0;
+      transform: rotate(-5deg) translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(0) translateY(0);
+    }
+  }
+  
+  /* Staggered animations */
+  .scroll-animate.stagger-1 { animation-delay: calc(var(--stagger-delay) * 1); }
+  .scroll-animate.stagger-2 { animation-delay: calc(var(--stagger-delay) * 2); }
+  .scroll-animate.stagger-3 { animation-delay: calc(var(--stagger-delay) * 3); }
+  
+  /* Performance optimizations */
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-animate {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+  
+  /* Customize Framer Motion transitions */
+  .motion-transition {
+    transition: all var(--animation-duration) var(--animation-easing);
+  }
