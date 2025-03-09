@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
+import './About.css';
 import { 
     FaLinkedin, FaTwitter, FaInstagram, FaSeedling, 
     FaRecycle, FaChartLine, FaHandshake, FaAward, FaGithub
@@ -48,14 +49,14 @@ const About = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-green-50 to-emerald-50">
+        <div className="about-container min-h-screen">
             {/* Enhanced Hero Section */}
             <motion.section 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="relative py-32 overflow-hidden"
+                className="about-hero relative py-32 overflow-hidden"
             >
-                <div className="absolute inset-0 opacity-15">
+                <div className="hero-gradient absolute inset-0 opacity-15">
                     <motion.div
                         animate={{ rotate: 360 }}
                         transition={{ duration: 120, repeat: Infinity, ease: "linear" }}

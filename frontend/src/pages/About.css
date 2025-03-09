@@ -1,0 +1,124 @@
+/* About.css */
+:root {
+    --emerald-50: #ecfdf5;
+    --emerald-600: #059669;
+    --emerald-700: #047857;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Hero Section */
+  .about-hero {
+    position: relative;
+    padding: 8rem 0;
+    background: linear-gradient(135deg, var(--emerald-50) 0%, #f0fdf4 100%);
+    overflow: hidden;
+  }
+  
+  .hero-gradient {
+    position: absolute;
+    width: 1200px;
+    height: 1200px;
+    background: radial-gradient(circle, var(--emerald-50) 0%, rgba(236,253,245,0) 70%);
+    animation: gradientRotate 60s linear infinite;
+  }
+  
+  @keyframes gradientRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 5rem);
+    line-height: 1.1;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Stats Grid */
+  .stats-grid {
+    display: grid;
+    gap: 2rem;
+    padding: 4rem 0;
+  }
+  
+  .stat-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  /* Timeline Section */
+  .timeline-container {
+    position: relative;
+    padding: 4rem 0;
+  }
+  
+  .timeline-line {
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--emerald-50), var(--green-600));
+  }
+  
+  /* Team Section */
+  .team-grid {
+    display: grid;
+    gap: 2rem;
+    padding: 4rem 0;
+  }
+  
+  .team-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .team-card img {
+    transition: transform 0.3s ease;
+  }
+  
+  .team-card:hover img {
+    transform: scale(1.05);
+  }
+  
+  /* Partners Section */
+  .partners-grid {
+    display: grid;
+    gap: 1.5rem;
+    padding: 4rem 0;
+  }
+  
+  .partner-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .partner-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .stats-grid,
+    .team-grid,
+    .partners-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .timeline-line {
+      left: 1rem;
+    }
+  }

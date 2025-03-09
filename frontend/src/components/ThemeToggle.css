@@ -1,94 +1,161 @@
-.theme-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
+/* ThemeToggle.css */
+:root {
+    --toggle-width: 64px;
+    --toggle-height: 32px;
+    --thumb-size: 24px;
+    --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    --sun-color: #ffd700;
+    --moon-color: #e2e8f0;
+    --light-bg: linear-gradient(145deg, #ffffff, #f5f5f5);
+    --dark-bg: linear-gradient(145deg, #2d3748, #1a202c);
+    --accent-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
   
-  .toggle-track {
-    width: 50px;
-    height: 24px;
-    background: var(--color-border);
-    border-radius: 12px;
-    position: relative;
-    transition: background 0.3s ease;
-  }
-  
-  .toggle-thumb {
-    width: 20px;
-    height: 20px;
-    background: var(--color-background);
-    border-radius: 50%;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    transition: transform 0.3s ease;
-  }
-  
-  .toggle-track.dark .toggle-thumb {
-    transform: translateX(26px);
-  }
-  
-  .toggle-label {
-    font-size: 1.2rem;
-  }
-
   .theme-toggle {
     background: none;
     border: none;
     cursor: pointer;
+    padding: 8px;
+    border-radius: 50px;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
+    gap: 12px;
+    position: relative;
+    transition: var(--transition);
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .theme-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--accent-shadow);
+  }
+  
+  .theme-toggle:active {
+    transform: translateY(1px);
   }
   
   .toggle-track {
-    width: 50px;
-    height: 24px;
-    background: var(--color-border);
-    border-radius: 12px;
+    width: var(--toggle-width);
+    height: var(--toggle-height);
+    border-radius: 50px;
     position: relative;
-    transition: background 0.3s ease;
+    transition: var(--transition);
+    background: var(--light-bg);
+    box-shadow: 
+      inset 2px 2px 4px rgba(0, 0, 0, 0.1),
+      inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+  }
+  
+  .toggle-track.dark {
+    background: var(--dark-bg);
+    box-shadow: 
+      inset 2px 2px 4px rgba(0, 0, 0, 0.3),
+      inset -2px -2px 4px rgba(255, 255, 255, 0.05);
   }
   
   .toggle-thumb {
-    width: 20px;
-    height: 20px;
-    background: var(--color-background);
+    width: var(--thumb-size);
+    height: var(--thumb-size);
+    background: #fff;
     border-radius: 50%;
     position: absolute;
-    top: 2px;
-    left: 2px;
-    transition: transform 0.3s ease;
+    top: 4px;
+    left: 4px;
+    transition: 
+      transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+      box-shadow 0.3s ease;
+    box-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .toggle-track.dark .toggle-thumb {
-    transform: translateX(26px);
+    transform: translateX(calc(var(--toggle-width) - var(--thumb-size) - 8px));
+    box-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.3),
+      inset 0 -1px 1px rgba(255, 255, 255, 0.1);
+  }
+  
+  .toggle-thumb::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.2)
+    );
+    opacity: 0.8;
   }
   
   .toggle-label {
-    font-size: 1.2rem;
-  }
-  
-  /* Error Boundary Styles */
-  .error-boundary {
-    padding: 2rem;
+    font-size: 1.4rem;
+    transition: 
+      transform 0.4s ease,
+      opacity 0.3s ease;
+    width: 24px;
     text-align: center;
-    background: #ffe6e6;
-    border: 2px solid #ff4444;
-    border-radius: 8px;
-    margin: 1rem;
   }
   
-  .error-boundary button {
-    background: #ff4444;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
+  .toggle-track.light + .toggle-label {
+    transform: scale(1.2) rotate(15deg);
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+  }
+  
+  .toggle-track.dark + .toggle-label {
+    transform: scale(1.1) rotate(-15deg);
+    filter: drop-shadow(0 0 4px rgba(226, 232, 240, 0.3));
+  }
+  
+  /* Hover Effects */
+  .theme-toggle:hover .toggle-thumb {
+    transform: scale(1.05);
+  }
+  
+  .theme-toggle:hover .toggle-track:not(.dark) .toggle-thumb {
+    box-shadow: 
+      0 3px 6px rgba(0, 0, 0, 0.25),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .theme-toggle:hover .toggle-track.dark .toggle-thumb {
+    box-shadow: 
+      0 3px 6px rgba(0, 0, 0, 0.4),
+      inset 0 -1px 1px rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .theme-toggle,
+    .toggle-thumb,
+    .toggle-label {
+      transition: none !important;
+    }
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    :root {
+      --toggle-width: 56px;
+      --toggle-height: 28px;
+      --thumb-size: 20px;
+    }
+    
+    .theme-toggle {
+      padding: 6px;
+      gap: 8px;
+    }
+    
+    .toggle-label {
+      font-size: 1.2rem;
+    }
   }
