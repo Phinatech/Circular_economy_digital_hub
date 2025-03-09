@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from '../components/Layout.jsx';
-import ErrorBoundary from '../components/errorBoundary.jsx';
+import ErrorBoundary from './ErrorBoundary.jsx';
 import Marketplace from '../pages/Marketplace.jsx';
 import Home from '../pages/Home.jsx';
 import Login from '../pages/Auth/Login.jsx';
