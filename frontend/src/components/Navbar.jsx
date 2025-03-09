@@ -1,63 +1,121 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import { FiInfo, FiBook, FiMessageSquare, FiUser } from 'react-icons/fi';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { 
+  FiInfo, FiBook, FiMessageSquare, FiUser, FiChevronDown, 
+  FiChevronUp, FiGrid, FiUsers, FiDownload, FiGlobe, FiSearch,
+  FiSettings, FiTool, FiLogOut
+} from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 import './Navbar.css';
 import ThemeToggle from './ThemeToggle';
+import { useAuth } from '../context/AuthContext'; // Assume you have this context
+
+const useDropdownState = (initialState = {}) => {
+  const [dropdowns, setDropdowns] = useState(initialState);
+
+  const toggleDropdown = useCallback((dropdown) => {
+    setDropdowns(prev => ({
+      ...Object.keys(prev).reduce((acc, key) => ({ ...acc, [key]: false }), {}),
+      [dropdown]: !prev[dropdown]
+    }));
+  }, []);
+
+  return [dropdowns, toggleDropdown];
+};
 
 const Navbar = () => {
+  const { t, i18n } = useTranslation();
+  const { isAuthenticated, user, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [dropdowns, toggleDropdown] = useDropdownState({
+    solutions: false,
+    knowledge: false,
+    community: false,
+    resources: false,
+    account: false,
+    language: false
+  });
   const location = useLocation();
   const navRef = useRef(null);
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
 
-  // Close menu on route change
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
-
-  // Close menu when clicking outside
+  // Close all dropdowns on route change or outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (navRef.current && !navRef.current.contains(e.target)) {
         setIsOpen(false);
+        toggleDropdown('all');
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+  }, [toggleDropdown]);
 
-  // Focus trap for mobile navigation
+  // Keyboard navigation
   useEffect(() => {
-    if (isOpen) {
-      const focusableElements = navRef.current.querySelectorAll('a, button');
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        toggleDropdown('all');
+      }
+    };
 
-      const handleTabKey = (e) => {
-        if (e.key === 'Tab') {
-          if (e.shiftKey) {
-            if (document.activeElement === firstElement) {
-              e.preventDefault();
-              lastElement.focus();
-            }
-          } else {
-            if (document.activeElement === lastElement) {
-              e.preventDefault();
-              firstElement.focus();
-            }
-          }
-        }
-      };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [toggleDropdown]);
 
-      document.addEventListener('keydown', handleTabKey);
-      return () => document.removeEventListener('keydown', handleTabKey);
-    }
-  }, [isOpen]);
-
-  const handleMenuToggle = () => {
-    setIsOpen(!isOpen);
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+    setSearchQuery('');
   };
+
+  const navigationItems = [
+    {
+      name: t('solutions'),
+      icon: FiGrid,
+      dropdown: [
+        { to: '/circular-solutions', name: t('circularSolutions') },
+        { 
+          name: t('wasteManagement'),
+          submenu: [
+            { to: '/e-waste', name: t('eWaste') },
+            { to: '/plastic-recycling', name: t('plasticRecycling') }
+          ]
+        },
+        { to: '/recycling-programs', name: t('recyclingPrograms') }
+      ]
+    },
+    {
+      name: t('knowledgeCenter'),
+      icon: FiBook,
+      dropdown: [
+        { to: '/guides', name: t('guides') },
+        { to: '/case-studies', name: t('caseStudies') },
+        { to: '/research-papers', name: t('researchPapers') }
+      ]
+    },
+    {
+      name: t('community'),
+      icon: FiUsers,
+      dropdown: [
+        { to: '/forum', name: t('forum') },
+        { to: '/events', name: t('events') },
+        { to: '/partners', name: t('partners') }
+      ]
+    },
+    {
+      name: t('resources'),
+      icon: FiDownload,
+      dropdown: [
+        { to: '/downloads', name: t('downloads') },
+        { to: '/calculators', name: t('calculators') },
+        { to: '/api-docs', name: t('apiDocs') }
+      ]
+    }
+  ];
 
   return (
     <nav className={`navbar ${isOpen ? 'open' : ''}`} ref={navRef}>
@@ -66,11 +124,23 @@ const Navbar = () => {
           <span className="logo-icon">♻️</span>
           CircularHub
         </NavLink>
-        
+
+        <form className="nav-search" onSubmit={handleSearch}>
+          <input
+            type="search"
+            placeholder={t('searchPlaceholder')}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button type="submit">
+            <FiSearch />
+          </button>
+        </form>
+
         <button 
           className="hamburger" 
-          onClick={handleMenuToggle} 
-          aria-label="Menu" 
+          onClick={() => setIsOpen(!isOpen)} 
+          aria-label={t('menu')}
           aria-expanded={isOpen}
         >
           <span className="hamburger-line"></span>
@@ -80,50 +150,129 @@ const Navbar = () => {
       </div>
 
       <div className={`nav-links ${isOpen ? 'show' : ''}`}>
-        {/* Main Navigation */}
         <div className="nav-section">
-          <NavLink 
-            to="/about" 
-            className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-          >
-            <FiInfo className="nav-icon" />
-            About
-          </NavLink>
-          <NavLink 
-            to="/knowledge-center" 
-            className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-          >
-            <FiBook className="nav-icon" />
-            Knowledge Center
-          </NavLink>
-          <NavLink 
-            to="/forum" 
-            className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-          >
-            <FiMessageSquare className="nav-icon" />
-            Forum
-          </NavLink>
+          {navigationItems.map((item, index) => (
+            <div className="nav-dropdown" key={index}>
+              <button 
+                className="nav-item"
+                onClick={() => toggleDropdown(item.name)}
+                onTouchStart={() => window.innerWidth <= 768 && toggleDropdown(item.name)}
+                aria-expanded={dropdowns[item.name]}
+              >
+                <item.icon className="nav-icon" />
+                <span>{item.name}</span>
+                {dropdowns[item.name] ? <FiChevronUp /> : <FiChevronDown />}
+              </button>
+              {dropdowns[item.name] && (
+                <div className="dropdown-menu">
+                  {item.dropdown.map((link, linkIndex) => (
+                    <div key={linkIndex}>
+                      {link.submenu ? (
+                        <div className="nested-dropdown">
+                          <button className="dropdown-item">
+                            {link.name}
+                            <FiChevronRight className="nested-arrow" />
+                          </button>
+                          <div className="nested-menu">
+                            {link.submenu.map((sub, subIndex) => (
+                              <NavLink
+                                key={subIndex}
+                                to={sub.to}
+                                className="dropdown-item"
+                                onClick={() => toggleDropdown('all')}
+                              >
+                                {sub.name}
+                              </NavLink>
+                            ))}
+                          </div>
+                        </div>
+                      ) : (
+                        <NavLink
+                          key={linkIndex}
+                          to={link.to}
+                          className="dropdown-item"
+                          onClick={() => toggleDropdown('all')}
+                        >
+                          {link.name}
+                        </NavLink>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+
+          <div className="nav-dropdown">
+            <button 
+              className="nav-item"
+              onClick={() => toggleDropdown('language')}
+              aria-expanded={dropdowns.language}
+            >
+              <FiGlobe className="nav-icon" />
+              {i18n.language.toUpperCase()}
+            </button>
+            {dropdowns.language && (
+              <div className="dropdown-menu">
+                {['en', 'es', 'fr'].map((lang) => (
+                  <button
+                    key={lang}
+                    className="dropdown-item"
+                    onClick={() => i18n.changeLanguage(lang)}
+                  >
+                    {t(`language.${lang}`)}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
-        {/* User & Settings */}
         <div className="nav-section">
           <ThemeToggle className="theme-toggle" />
-          <div className="nav-actions">
-            <NavLink 
-              to="/login" 
-              className="nav-button login-btn"
-              onClick={() => setLoading(true)}
-            >
-              <FiUser className="nav-icon" />
-              {loading ? 'Loading...' : 'Login'}
-            </NavLink>
-            <NavLink 
-              to="/signup" 
-              className="nav-button signup-btn"
-              onClick={() => setLoading(true)}
-            >
-              {loading ? 'Loading...' : 'Sign Up'}
-            </NavLink>
+          
+          <div className="nav-dropdown">
+            {isAuthenticated ? (
+              <button 
+                className="nav-button account-btn"
+                onClick={() => toggleDropdown('account')}
+                aria-expanded={dropdowns.account}
+              >
+                {user.avatar ? (
+                  <img src={user.avatar} alt={user.name} className="user-avatar" />
+                ) : (
+                  <FiUser className="nav-icon" />
+                )}
+                <span>{user.name}</span>
+                {dropdowns.account ? <FiChevronUp /> : <FiChevronDown />}
+              </button>
+            ) : (
+              <NavLink 
+                to="/login" 
+                className="nav-button login-btn"
+                onClick={() => setLoading(true)}
+              >
+                <FiUser className="nav-icon" />
+                {loading ? t('loading') : t('login')}
+              </NavLink>
+            )}
+
+            {dropdowns.account && (
+              <div className="dropdown-menu">
+                <NavLink to="/profile" className="dropdown-item">
+                  <FiUser className="nav-icon" />
+                  {t('profile')}
+                </NavLink>
+                <NavLink to="/settings" className="dropdown-item">
+                  <FiSettings className="nav-icon" />
+                  {t('settings')}
+                </NavLink>
+                <button className="dropdown-item" onClick={logout}>
+                  <FiLogOut className="nav-icon" />
+                  {t('logout')}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

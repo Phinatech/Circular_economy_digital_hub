@@ -1,17 +1,14 @@
-// src/index.js
 import React from 'react';
-import { ThemeProvider } from './context/ThemeContext';
-import { createRoot } from 'react-dom/client'; // Updated import
-import App from './components/App'; // Verify this path
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { AuthProvider } from './context/AuthContext';
+import './i18n';
 
-// Create a root instance
-const container = document.getElementById('root');
-const root = createRoot(container);
-
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ThemeProvider>
+    <AuthProvider>
       <App />
-    </ThemeProvider>
+    </AuthProvider>
   </React.StrictMode>
 );
