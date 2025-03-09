@@ -6,6 +6,7 @@ import { useUser } from '../../context/UserContext';
 import AvatarEditor from './AvatarEditor';
 import './UserProfile.css';
 import PasswordChange from '../Auth/PasswordChange';
+import Loading from '../Loading'; // Assuming you have a Loading component
 
 const profileSchema = z.object({
     firstName: z.string().min(2, "Minimum 2 characters"),
@@ -19,7 +20,7 @@ const UserProfile = () => {
     const [serverError, setServerError] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    const { register, handleSubmit, formState: { errors }, reset, watch } = useForm({
         resolver: zodResolver(profileSchema),
         defaultValues: userProfile || {}
     });
@@ -54,9 +55,7 @@ const UserProfile = () => {
                     initialImage={userProfile.avatar}
                 />
             </div>
-            import PasswordChange from '../Auth/PasswordChange';
 
-            // Add to return statement
             <section className="security-section">
                 <h3>Security Settings</h3>
                 <PasswordChange />
@@ -122,6 +121,21 @@ const UserProfile = () => {
                     {isSubmitting ? 'Saving...' : 'Save Profile'}
                 </button>
             </form>
+        </div>
+    );
+};
+
+const GalleryImage = ({ src }) => {
+    const [loaded, setLoaded] = useState(false);
+
+    return (
+        <div className="image-container">
+            {!loaded && <Loading type="dots" />}
+            <img 
+                src={src} 
+                onLoad={() => setLoaded(true)}
+                style={{ display: loaded ? 'block' : 'none' }}
+            />
         </div>
     );
 };
