@@ -35,6 +35,21 @@ npm start
 ```
 Then, navigate to `http://localhost:3000` in your web browser to explore the application.
 
+## **Code Structure**
+The project is organized into three main directories: `backend`, `frontend`, and `database`.
+
+- **Backend**: Contains the server-side code, including controllers, models, routes, and services.
+- **Frontend**: Contains the client-side code, including components, pages, and styles.
+- **Database**: Contains database migrations and seed files.
+
+## **Application Layout**
+The application features a user-friendly interface with the following key components:
+- **Home Page**: The landing page that provides an overview and navigation options.
+- **Dashboard**: A personalized area for users to view their statistics and insights.
+- **Forum**: A space for community interaction and discussions.
+- **Profile Management**: Allows users to manage their personal information and settings.
+- **Help Center**: Provides resources and support for users.
+
 ## **Project Structure**
 ```filetree
 Circular_economy_digital_hub
@@ -81,6 +96,7 @@ Circular_economy_digital_hub
 |       ├── config.js
 |       └── README.md
 |   └── README.md
+
 ```
 
 ## **Contributing**
