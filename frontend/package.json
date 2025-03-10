@@ -37,6 +37,12 @@
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18"
   },
+  "overrides": {
+    "nth-check": "2.0.1",
+    "serialize-javascript": "6.0.2",
+    "css-select": "5.1.0",
+    "svgo": "3.0.2"
+  },
   "author": "tawe kelvin",
   "license": "MIT",
   "browserslist": {
